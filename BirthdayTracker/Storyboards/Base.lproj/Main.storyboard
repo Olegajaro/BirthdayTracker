@@ -48,7 +48,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4a-gy-Gfh">
-                                        <rect key="frame" x="0.0" y="184" width="280" height="216"/>
+                                        <rect key="frame" x="0.0" y="184.5" width="280" height="216"/>
                                         <date key="date" timeIntervalSinceReferenceDate="652024215.24556601">
                                             <!--2021-08-30 13:50:15 +0000-->
                                         </date>
@@ -64,7 +64,10 @@
                             <constraint firstItem="abt-gp-iz6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Zty-kh-16g"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Birthday" id="r9y-oI-XzM"/>
+                    <navigationItem key="navigationItem" title="Add Birthday" id="r9y-oI-XzM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kjr-Ck-eF3"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="twG-Dv-hQ8"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -79,11 +82,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="usb-0a-jt1">
-                                <rect key="frame" x="0.0" y="24.5" width="320" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Friends" rowHeight="58" id="usb-0a-jt1">
+                                <rect key="frame" x="0.0" y="24.5" width="320" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="usb-0a-jt1" id="kj1-xT-Ray">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
