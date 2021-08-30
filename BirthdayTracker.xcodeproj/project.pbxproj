@@ -15,6 +15,7 @@
 		107939AD26DD07B00093B7E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107939AC26DD07B00093B7E1 /* Assets.xcassets */; };
 		107939B026DD07B00093B7E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107939AE26DD07B00093B7E1 /* LaunchScreen.storyboard */; };
 		107939B826DD0C320093B7E1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 107939B726DD0C320093B7E1 /* .gitignore */; };
+		107939C226DD23390093B7E1 /* Birthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107939C126DD23390093B7E1 /* Birthday.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		107939AF26DD07B00093B7E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		107939B126DD07B00093B7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		107939B726DD0C320093B7E1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		107939C126DD23390093B7E1 /* Birthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Birthday.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		1079399F26DD07B00093B7E1 /* BirthdayTracker */ = {
 			isa = PBXGroup;
 			children = (
+				107939C026DD23210093B7E1 /* Models */,
 				107939BD26DD0CF50093B7E1 /* ViewControllers */,
 				107939BA26DD0CBF0093B7E1 /* Storyboards */,
 				107939BB26DD0CCC0093B7E1 /* Resources */,
@@ -111,6 +114,14 @@
 				107939A426DD07B00093B7E1 /* ViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		107939C026DD23210093B7E1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				107939C126DD23390093B7E1 /* Birthday.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				107939C226DD23390093B7E1 /* Birthday.swift in Sources */,
 				107939A526DD07B00093B7E1 /* ViewController.swift in Sources */,
 				107939A126DD07B00093B7E1 /* AppDelegate.swift in Sources */,
 				107939A326DD07B00093B7E1 /* SceneDelegate.swift in Sources */,
