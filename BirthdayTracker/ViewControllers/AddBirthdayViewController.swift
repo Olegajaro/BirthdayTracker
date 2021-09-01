@@ -19,5 +19,9 @@ class AddBirthdayViewController: UIViewController {
         birthdayPicker.maximumDate = Date()
     }
     
+    @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+        print("Нажата кнопка сохранения")
+    }
+    
 }
 
