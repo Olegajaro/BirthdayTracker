@@ -7,34 +7,46 @@
 
 import UIKit
 
-class BirthdaysTableViewController: UITableViewController {
+class BirthdaysTableViewController: UITableViewController, AddBirthdayViewControllerDelegate {
+    
+    var birthdays = [Birthday]()
+    
+    let dateFormatter = DateFormatter()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return birthdays.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "birthdayCellIdentifier", for: indexPath)
+        let birthday = birthdays[indexPath.row]
+        cell.textLabel?.text = birthday.firstName + " " + birthday.lastName
+        cell.detailTextLabel?.text = dateFormatter.string(from: birthday.birthdate)
         return cell
     }
-    */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navigationController =
+                segue.destination as? UINavigationController else { return }
+        guard let addBirthdayViewController =
+                navigationController.topViewController as? AddBirthdayViewController else { return }
+        
+        addBirthdayViewController.delegate = self
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -80,4 +92,9 @@ class BirthdaysTableViewController: UITableViewController {
     }
     */
 
+    // MARK: - AddBirthdayViewControllerDelegate
+    func addBirthdayViewController(_ addBirthdayViewController: AddBirthdayViewController, didAddBirthday birthday: Birthday) {
+        birthdays.append(birthday)
+        tableView.reloadData()
+    }
 }
