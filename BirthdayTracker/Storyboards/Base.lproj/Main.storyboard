@@ -65,7 +65,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Birthday" id="r9y-oI-XzM">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kjr-Ck-eF3"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kjr-Ck-eF3">
+                            <connections>
+                                <action selector="cancelTapped:" destination="BYZ-38-t0r" id="EmO-oQ-pnE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="twG-Dv-hQ8">
                             <connections>
                                 <action selector="saveTapped:" destination="BYZ-38-t0r" id="UmW-YS-CNj"/>
