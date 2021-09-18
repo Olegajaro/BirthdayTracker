@@ -37,14 +37,12 @@ class AddBirthdayViewController: UIViewController {
         let newBirthday = Birthday(firstName: firstName, lastName: lastName, birthdate: birthday)
         
         delegate?.addBirthdayViewController(self, didAddBirthday: newBirthday)
-//        print("Создана запись о дне рождения")
-//        print("Имя: \(newBirthday.firstName)")
-//        print("Фамилия: \(newBirthday.lastName)")
-//        print("День Рождения: \(newBirthday.birthdate)")
+        
+        dismiss(animated: true)
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 }
 

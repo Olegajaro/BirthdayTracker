@@ -12,6 +12,10 @@ class Birthday {
     let lastName: String
     let birthdate: Date
     
+    var fullName: String {
+        "\(firstName) \(lastName)"
+    }
+    
     init(firstName: String, lastName: String, birthdate: Date) {
         self.firstName = firstName
         self.lastName = lastName
