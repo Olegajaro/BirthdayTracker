@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreData
 
-class BirthdaysTableViewController: UITableViewController, AddBirthdayViewControllerDelegate {
+class BirthdaysTableViewController: UITableViewController {
     
     var birthdays = [Birthday]()
     
@@ -19,6 +20,20 @@ class BirthdaysTableViewController: UITableViewController, AddBirthdayViewContro
         
         dateFormatter.dateStyle = .full
         dateFormatter.timeStyle = .none
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = Birthday.fetchRequest() as NSFetchRequest<Birthday>
+        
+        do {
+            birthdays = try context.fetch(fetchRequest)
+        } catch let error {
+            print("Не удалось загрузить данные из-за ошибки: \(error).")
+        }
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -36,21 +51,20 @@ class BirthdaysTableViewController: UITableViewController, AddBirthdayViewContro
         var content = cell.defaultContentConfiguration()
         let birthday = birthdays[indexPath.row]
         
-        content.text = birthday.fullName
-        content.secondaryText = dateFormatter.string(from: birthday.birthdate)
+        let firstName = birthday.firstName ?? ""
+        let lastName = birthday.lastName ?? ""
+        content.text = firstName + " " + lastName
+        
+        if let date = birthday.birthdate as Date? {
+            content.secondaryText = dateFormatter.string(from: date)
+        } else {
+            content.secondaryText = " "
+        }
         
         cell.contentConfiguration = content
         return cell
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navigationController =
-                segue.destination as? UINavigationController else { return }
-        guard let addBirthdayViewController =
-                navigationController.topViewController as? AddBirthdayViewController else { return }
-        
-        addBirthdayViewController.delegate = self
-    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -87,18 +101,5 @@ class BirthdaysTableViewController: UITableViewController, AddBirthdayViewContro
     */
 
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: - AddBirthdayViewControllerDelegate
-    func addBirthdayViewController(_ addBirthdayViewController: AddBirthdayViewController, didAddBirthday birthday: Birthday) {
-        birthdays.append(birthday)
-        tableView.reloadData()
-    }
+ }*/
 }

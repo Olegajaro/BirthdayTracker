@@ -6,21 +6,13 @@
 //
 
 import UIKit
-
-protocol AddBirthdayViewControllerDelegate {
-    func addBirthdayViewController(
-        _ addBirthdayViewController: AddBirthdayViewController,
-        didAddBirthday birthday: Birthday
-    )
-}
+import CoreData
 
 class AddBirthdayViewController: UIViewController {
     
     @IBOutlet var firsNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var birthdayPicker: UIDatePicker!
-    
-    var delegate: AddBirthdayViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +23,26 @@ class AddBirthdayViewController: UIViewController {
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
         let firstName = firsNameTextField.text ?? ""
         let lastName = lastNameTextField.text ?? ""
+        let birthdate = birthdayPicker.date
         
-        let birthday = birthdayPicker.date
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
         
-        let newBirthday = Birthday(firstName: firstName, lastName: lastName, birthdate: birthday)
+        let newBirthday = Birthday(context: context)
+        newBirthday.firstName = firstName
+        newBirthday.lastName = lastName
+        newBirthday.birthdate = birthdate as Date?
+        newBirthday.birthdayId = UUID().uuidString
         
-        delegate?.addBirthdayViewController(self, didAddBirthday: newBirthday)
+        if let uniqueId = newBirthday.birthdayId {
+            print("birthdayId: \(uniqueId)")
+        }
+        
+        do {
+            try context.save()
+        } catch let error {
+            print("Не удалось сохранить из-за ошибки \(error)")
+        }
         
         dismiss(animated: true)
     }
