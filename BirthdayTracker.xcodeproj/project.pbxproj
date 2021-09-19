@@ -63,7 +63,6 @@
 		1079399F26DD07B00093B7E1 /* BirthdayTracker */ = {
 			isa = PBXGroup;
 			children = (
-				107939C026DD23210093B7E1 /* Models */,
 				107939BD26DD0CF50093B7E1 /* ViewControllers */,
 				107939BA26DD0CBF0093B7E1 /* Storyboards */,
 				107939BB26DD0CCC0093B7E1 /* Resources */,
@@ -115,13 +114,6 @@
 				10B94DE726E0039200E92317 /* BirthdaysTableViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		107939C026DD23210093B7E1 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

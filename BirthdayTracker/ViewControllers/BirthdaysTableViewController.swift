@@ -28,6 +28,10 @@ class BirthdaysTableViewController: UITableViewController {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = Birthday.fetchRequest() as NSFetchRequest<Birthday>
         
+        let sortDescriptorOne = NSSortDescriptor(key: "lastName", ascending: true)
+        let sortDescriptorTwo = NSSortDescriptor(key: "firstName", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptorOne, sortDescriptorTwo]
+        
         do {
             birthdays = try context.fetch(fetchRequest)
         } catch let error {
